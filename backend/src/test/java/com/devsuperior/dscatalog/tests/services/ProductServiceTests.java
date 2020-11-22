@@ -41,8 +41,8 @@ public class ProductServiceTests {
 	@BeforeEach
 	void setUp() throws Exception {
 		existingId = 1L;
-		nonExistingId = 1000L;
-		dependentId = 4L;
+		nonExistingId = 2L;
+		dependentId = 3L;
 		product = ProductFactory.createProduct();
 		page = new PageImpl<>(List.of(product));
 		
@@ -60,7 +60,7 @@ public class ProductServiceTests {
 	}
 	
 	@Test
-	public void deleteShouldThrowDatabaseExceptionWhenIdDoesNotExist() {
+	public void deleteShouldThrowDatabaseExceptionWhenDependentId() {
 		
 		Assertions.assertThrows(DatabaseException.class, () -> {
 			service.delete(dependentId);
